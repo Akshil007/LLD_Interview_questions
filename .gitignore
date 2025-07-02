@@ -6,6 +6,7 @@ ObeerverPattern/out/
 *.iml
 *.xml
 *.class
+*.tar
 
 ### Eclipse ###
 .apt_generated
