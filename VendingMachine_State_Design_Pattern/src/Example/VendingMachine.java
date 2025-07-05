@@ -103,4 +103,16 @@ public class VendingMachine {
         inventory.display();
     }
 
+    public void insertCoin(int amount) throws Exception {
+        machineState.insertCoin(this, amount);
+    }
+    public void cancelProcess() throws Exception {
+        machineState.cancelProcess(this);
+    }
+    public void SelectItem(int code) throws Exception {
+        machineState.SelectItem(this, code);
+    }
+    public void dispenseItem() throws Exception {
+        machineState.dispenseItem(this);
+    }
 }

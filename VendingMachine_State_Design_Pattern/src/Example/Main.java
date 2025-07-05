@@ -22,19 +22,16 @@ public class Main {
                 vendingMachine.displayInventory();
                 System.out.println("Add amount:");
                 int amount = sc.nextInt();
-                State state = vendingMachine.getMachineState();
-                state.insertCoin(vendingMachine, amount);
+                vendingMachine.insertCoin(amount);
 
-                state = vendingMachine.getMachineState();
                 System.out.println("Selecting soda: ");
                 int code = sc.nextInt();
-                state.SelectItem(vendingMachine, code);
+                vendingMachine.SelectItem(code);
 
-                state.SelectItem(vendingMachine, 101);
+                vendingMachine.SelectItem(101);
 
-                state = vendingMachine.getMachineState();
                 System.out.println("Dispensing items: ");
-                state.dispenseItem(vendingMachine);
+                vendingMachine.dispenseItem();
 
             }
         } catch (Exception e){
