@@ -3,7 +3,7 @@ package Models;
 public class Seat {
     int id;
     double price;
-    Status status;
+    private Status status;
     Type type;
 
     public Seat(int id, double price, Type type, Status status) {
@@ -41,11 +41,38 @@ public class Seat {
         return status;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
-    }
 
     void changeStatus(Status newStatus){
         status = newStatus;
+    }
+
+    public boolean reserve() throws InterruptedException {
+        synchronized (this) {
+            if(status.equals(Status.AVAILABLE)) {
+                Thread.sleep(1000);
+                status = Status.RESERVED;
+                return true;
+            }
+            return false;
+        }
+    }
+
+    // verify payment status before changing to book status
+    public boolean book(){
+        if(status.equals(Status.RESERVED)){
+            status = Status.BOOKED;
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "\n\t\t\t Seat{" +
+                "id=" + id +
+                ", price=" + price +
+                ", status=" + status +
+                ", type=" + type +
+                '}';
     }
 }
